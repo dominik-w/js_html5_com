@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>jQuery Mobile - test</title>
+        
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+        
+    </head>
+<body>
+    
+    <a href="#dialog" data-rel="popup" data-position-to="window"
+    data-role="button" data-transition="pop">Dialog demo</a>
+    
+    <div data-role="popup" id="dialog" data-overlay-theme="a" data-theme="c">
+        <div data-role="header" data-theme="a">
+            <h1>Delete it?</h1>
+        </div>
+        
+        <div data-role="content" data-theme="d">
+            <h3>Are you sure you want to delete this item?</h3>
+            <p>Lorem ipsum ...</p>
+            <a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">No</a>
+            <a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="b">Yes</a>
+        </div>
+    </div>
+    
+</body>
+</html>

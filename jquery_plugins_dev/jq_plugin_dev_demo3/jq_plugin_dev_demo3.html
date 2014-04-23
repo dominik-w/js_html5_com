@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>jQuery plugins dev</title>
+        
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="jq_plugin_dev_demo3.js"></script>
+        
+        <script>
+        $(document).ready(function() {
+            $('#random').randStrGenerator();
+        });
+        
+        // own params
+        // $('#random').randStrGenerator({
+            // minLength: 5,
+            // randomStrLength: 10
+        // });
+        </script>
+    </head>
+<body>
+    
+    <p>Test pluginu generatora. Odśwież stronę, aby wygenerować nowy:</p>
+    
+     <input type="text" id="random" />
+ 
+</body>
+</html>

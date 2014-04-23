@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>jQuery plugins dev</title>
+        
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="jq_plugin_dev_demo4.js"></script>
+        
+        <style type="text/css">
+        #slideshow img {
+            display: none;
+            position: absolute;
+        }
+        </style>
+        
+        <script>
+        $(document).ready(function() {
+            $.mySlideShow('#slideshow');
+        });
+        </script>
+        
+    </head>
+<body>
+    
+    <p>Test - slide show</p>
+    
+    <div id="slideshow">
+        <img src="img/1.png" alt="" />
+        <img src="img/2.png" alt="" />
+        <img src="img/3.png" alt="" />
+        <img src="img/4.png" alt="" />
+        <img src="img/5.png" alt="" />
+        <img src="img/6.png" alt="" />
+    </div>
+	
+</body>
+</html>

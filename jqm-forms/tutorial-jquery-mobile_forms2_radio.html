@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>jQuery Mobile - test</title>
+        
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+        
+    </head>
+    <body>
+        <div data-role="page">
+            <div data-role="header">
+                <h1>Przyciski opcji</h1>
+            </div>
+            
+            <div data-role="content">
+                <form action="" method="post">
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <legend>Wybierz:</legend>
+                            
+                            <input type="radio" name="myradio" id="myradio1"
+                            value="1" checked="checked" />
+                            <label for="myradio1">Jeden</label>
+                            
+                            <input type="radio" name="myradio" id="myradio2"
+                            value="2" />
+                            <label for="myradio2">Dwa</label>
+                            
+                            <input type="radio" name="myradio" id="myradio3"
+                            value="3" />
+                            <label for="myradio3">Trzy</label>
+                            
+                        </fieldset>
+                        
+                        <br />
+                        
+                        <fieldset data-role="controlgroup" data-type="horizontal">
+                            <legend>Opcje w poziomie:</legend>
+                            
+                            <input type="radio" name="my_radio_h" id="my_radio_h1"
+                            value="1" checked="checked" />
+                            <label for="my_radio_h1">Jeden</label>
+                            
+                            <input type="radio" name="my_radio_h" id="my_radio_h2"
+                            value="2" />
+                            <label for="my_radio_h2">Dwa</label>
+                            
+                            <input type="radio" name="my_radio_h" id="my_radio_h3"
+                            value="3" />
+                            <label for="my_radio_h3">Trzy</label>
+                            
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </body>
+</html>

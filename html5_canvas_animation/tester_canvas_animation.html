@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <script type="application/javascript">
+    
+    // "setup" zmiennych
+    // w tym przypadku powinny byc dostepne globalnie
+    
+    var ctx = null;
+    
+    // x i y elementu (obrazek, ktory animujemy)
+    var x_icon = 0;
+    var y_icon = 0;
+    
+    // krok - o ile px bedzie sie przesuwac ikonka w danej plaszczyznie
+    var stepX = 2;
+    var stepY = 2;
+    
+    // dla ułatwienia określamy w zmiennych wymiary naszego obrazka
+    var size_x = 48;
+    var size_y = 48;
+    
+    // tak samo dla elementu canvas
+    var canvas_size_x = 480;
+    var canvas_size_y = 320;
+    
+    var anim_img = null;
+    
+    function draw() {
+        var canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+        
+        anim_img = new Image(size_x, size_y);
+        
+        // po wczytaniu obrazka rozpoczynamy animacje
+        anim_img.onload = function() {
+            setInterval('myAnimation()', 10);
+        }
+        
+        anim_img.src = 'resources/ff_anim.png';
+    }
+    
+    function myAnimation() {
+        // najpierw czyscimy obszar
+        ctx.clearRect(0, 0, canvas_size_x, canvas_size_y);
+        
+        // po dotarciu do krawedzi zmieniamy kierunek na przeciwny
+        // czyli efekt odbicia od krawedzi
+        if (x_icon < 0 || x_icon > canvas_size_x - size_x) {
+            stepX = -stepX;
+        }
+        
+        if (y_icon < 0 || y_icon > canvas_size_y - size_y) {
+            stepY = -stepY;
+        }
+        
+        // przesuwamy obrazek ...
+        x_icon += stepX;
+        y_icon += stepY;
+        
+        // i rysujemy w nowym miejscu
+        ctx.drawImage(anim_img, x_icon, y_icon);
+    }
+    
+    </script>
+ </head>
+  
+ <body onload="draw()">
+     <canvas id="canvas" width="480" height="320" style="border: solid 1px;"></canvas>
+ </body>
+  
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>jQuery plugins dev</title>
+        
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="jq_plugin_dev_demo2.js"></script>
+        
+        <script>
+        // call our plguin
+        $(document).ready(function() {
+            // $.mySimplePlugin('test_alert'); // jedna akcja 
+            
+            // a w taki sposób wywołamy wiele akcji
+            $.mySimplePlugin({test_css: true, test_alert: true});
+		});
+		</script>
+    </head>
+<body>
+
+ <div id="d1">Test div</div>
+ 
+ <br />
+ 
+ <div id="d2">Test div 2</div>
+ 
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Test własnych atrybutów HTML5</title>
+    
+    <script type="application/javascript">
+    function showCarDetails(car) {
+        var carBrand = car.getAttribute("data-car-brand");
+        alert("The " + car.innerHTML + " => " + carBrand);
+		
+		
+//var dominik = document.getElementById('dominik');
+//alert(dominik.getAttribute("data-birthday"));
+//alert(dominik.getAttribute("data-place"));	
+
+var dominik = document.getElementById('dominik');
+alert(dominik.dataset.birthday);
+alert(dominik.dataset.place);
+
+    }
+
+
+    </script>
+ </head>
+  
+ <body>
+     <h1>Samochody</h1>
+     <p>Kliknij, aby zobaczyć markę samochodu:</p>
+     
+     <ul style="cursor: pointer; width: 200px;">
+         <li onclick="showCarDetails(this)" 
+             id="Bora" data-car-brand="VW">Bora</li>
+         <li onclick="showCarDetails(this)" 
+             id="Cruze" data-car-brand="Chevrolet">Cruze</li>
+         <li onclick="showCarDetails(this)" 
+             id="Octavia" data-car-brand="Skoda">Octavia</li>
+         <li onclick="showCarDetails(this)" 
+             id="S60" data-car-brand="Volvo">S60</li>
+     </ul>
+	 
+	 <br />
+	 
+<span id="dominik" data-birthday="27-03-1986" data-place="Stargard">
+    Ten element przechowuje datę i miejsce moich urodzin. 
+</span>
+
+ </body>
+  
+</html>

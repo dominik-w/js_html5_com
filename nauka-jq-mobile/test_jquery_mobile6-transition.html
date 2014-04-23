@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>jQuery Mobile - test</title>
+        
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+        
+    </head>
+    <body>
+        
+        <div data-role="page">
+            <div data-role="header">
+                <h1>Page one</h1>
+             </div>
+             
+             <div data-role="content">
+                 <p>Hello, <a href="#second" data-transition="pop">
+                     open second page...</a>
+                 </p>
+                 <!-- try others: slide, slideup, slidedown, fade, flow -->
+             </div>
+         </div>
+         
+         <div data-role="page" id="second">
+             <div data-role="header">
+                 <h1>Page two</h1>
+             </div>
+             
+             <div data-role="content">
+                 Hello again!
+             </div>
+         </div>
+         
+    </body>
+</html>

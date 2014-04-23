@@ -1,0 +1,91 @@
+<html>
+    <head>
+		<script src='http://127.0.0.1:8000/menuapp/menuapp.html'></script>
+        <title>Menu w Adobe AIR</title>
+        <script type="text/javascript" src="AIRAliases.js"></script>
+        <script type="text/javascript">
+            // obsługa dla Zakończ
+            function doExit(e) {
+                air.NativeApplication.nativeApplication.exit();
+            }
+            
+            // obsługa dla Pomoc
+            function showHelp(e) {
+                alert('Oto pomoc....');
+            }
+            
+            // obsługa dla Tips
+            function showHideTips(e) {
+                if (showTips.checked == false) {
+                    showTips.checked = true;
+                }
+                else {
+                    showTips.checked = false;
+                }
+            }
+            
+            // tworzenie menu bazowego
+            var rootMenu = new air.NativeMenu();
+            
+            // tworzenie podmenu
+            var fileMenu = new air.NativeMenu();
+            
+            // dodanie elementu do podmenu:
+            var exit = new air.NativeMenuItem('Zakończ');
+            exit.addEventListener(air.Event.SELECT, doExit);
+            fileMenu.addItem(exit);
+            
+            // kolejne podmenu - pomoc
+            var helpMenu = new air.NativeMenu();
+            
+            var showTips = new air.NativeMenuItem('Tipsy');
+            showTips.addEventListener(air.Event.SELECT, showHideTips);
+            helpMenu.addItem(showTips);
+            
+            var helpPages = new air.NativeMenuItem('Strony Pomocy');
+            helpPages.addEventListener(air.Event.SELECT, showHelp);
+            helpMenu.addItem(helpPages);
+            
+            var separator = new air.NativeMenuItem('', true);
+            helpMenu.addItem(separator);
+            
+            var checkForUpdates = new air.NativeMenuItem('Aktualizuj program');
+            checkForUpdates.enabled = false;
+            helpMenu.addItem(checkForUpdates);
+            
+            // dodanie podmenu do menu bazowego:
+            rootMenu.addSubmenu(fileMenu, 'Plik');
+            rootMenu.addSubmenu(helpMenu, 'Pomoc');
+            
+            // dodaj menu do aplikacji lub okna (zależnie od OS)
+            if (air.NativeWindow.supportsMenu) {
+                // kod dla Windows
+                
+                // skróty klawiaturowe:
+                helpPages.keyEquivalent = 'f1';
+                
+                exit.keyEquivalent = 'f4';
+                exit.keyEquivalentModifiers = [air.Keyboard.ALTERNATE];
+                
+                window.nativeWindow.menu = rootMenu;
+            }
+            else if (air.NativeApplication.supportsMenu) {
+                // kod dla Mac OS
+                
+                helpPages.keyEquivalent = '?';
+                helpPages.keyEquivalentModifiers = [air.Keyboard.COMMAND];
+                
+                exit.keyEquivalent = 'q';
+                exit.keyEquivalentModifiers = [air.Keyboard.COMMAND];
+                
+                exit.label = 'Exit';
+                air.NativeApplication.nativeApplication.menu = rootMenu;
+            }
+
+        </script>
+	</head>
+
+    <body>
+		<p>Zawartość</p>        
+    </body>
+</html>

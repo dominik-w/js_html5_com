@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <script type="application/javascript">
+    
+    function draw() {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        
+        var img_obj = new Image();
+        img_obj.onload = function() {
+            // ustawienie kontekstu na srodku elementu canvas ...
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            
+            // i obrocenie o 45 stopni
+            ctx.rotate(-1 * Math.PI / 4);
+            ctx.drawImage(this, -1 * img_obj.width / 2, -1 * img_obj.height / 2);
+        };
+        
+        img_obj.src = "res/html5_d.png";
+    }
+    
+    </script>
+ </head>
+  
+ <body onload="draw()">
+     <canvas id="canvas" width="400" height="300" style="border: solid 1px;"></canvas>
+ </body>
+  
+</html>

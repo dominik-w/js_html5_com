@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>jQuery Mobile - test</title>
+        
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+        
+    </head>
+    <body>
+        
+        <div data-role="page" id="pageone">
+            <div data-role="header">
+                <h1>Buttons demo</h1>
+            </div>
+            
+            <div data-role="main" class="ui-content">
+                <a href="#pagetwo" class="ui-btn">Go to NEXT page</a>
+            </div>
+            
+            <div data-role="footer">
+                <h1>Footer - first page</h1>
+            </div>
+        </div>
+        
+        <div data-role="page" id="pagetwo">
+            <div data-role="header">
+                <h1>Page 2</h1>
+            </div>
+            
+            <div data-role="main" class="ui-content">
+                <a href="#" class="ui-btn" data-rel="back">Go back</a>
+            </div>
+            
+            <div data-role="footer">
+                <h1>Footer - second page</h1>
+            </div>
+        </div>
+        
+    </body>
+</html>

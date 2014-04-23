@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        
+        <title>zClip - test</title>
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src="zclip/jquery.zclip.js"></script>
+        
+    </head>
+    
+    <body>
+        <h4>Test kopiowania do schowka</h4>
+        
+        <a href="#" id="copy-link-wrap">
+            <input name="toclip" id="toclip" type="text" value="Dane testowe - do skopiowania" style="width: 320px"><br />
+            
+            <p id="copy-link" style="cursor: hand">Skopiuj do schowka</p>
+        </a>
+        
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $("#copy-link-wrap").zclip({
+                path: 'zclip/ZeroClipboard.swf',
+                copy: $('#toclip').val(),
+                afterCopy: function() {
+                    // console.log('copied');
+                    alert('Dane w schowku. Możesz je teraz wklejać...');
+                }
+            });
+        });
+        </script>
+        
+    </body>
+    
+</html>
