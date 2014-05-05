@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>HTML5 tutorial - hot points on image</title>
+        
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        
+        <style>
+        canvas { background:url(building.jpg) }
+        img, canvas { display: block; border: solid 1px; margin: 1em auto; }
+        </style>
+        
+        <script type="application/javascript">
+        
+        // data for "hot points"
+        var dataTab = {
+            0: 'Here is our office',
+            1: 'The level is empty!',
+            2: 'Here you can find our CEO',
+        };
+        
+        // main program
+        function render() {
+            // canvas
+            var canvas = document.getElementById('appCanvas');
+            var context = canvas.getContext('2d');
+            var circles = [];
+            
+            // keep functions here for better performance
+            var theCircle = function(x, y, radius) {
+                this.left = x - radius;
+                this.top = y - radius;
+                this.right = x + radius;
+                this.bottom = y + radius;
+            };
+            
+            var draw = function (context, x, y, fillcolor, radius, linewidth, strokestyle, fontcolor, textalign, fonttype, filltext) {
+                context.beginPath();
+                context.arc(x, y, radius, 0, 2 * Math.PI, false);
+                context.fillStyle = fillcolor;
+                context.fill();
+                context.lineWidth = linewidth;
+                context.strokeStyle = strokestyle;
+                context.stroke();
+                
+                context.fillStyle = fontcolor;
+                context.font = fonttype;
+                context.textAlign = textalign;
+                
+                context.fillText(filltext, x, y);
+            };
+            
+            var drawCircle = function (context, x, y, fillcolor, radius, linewidth, strokestyle, fontcolor, textalign, fonttype, filltext, circles) {
+                draw(context, x, y, fillcolor, radius, linewidth, strokestyle, fontcolor, textalign, fonttype, filltext);
+                var circle = new theCircle(x, y, radius);
+                circles.push(circle);
+            };
+            
+            // define our circles in right places
+            drawCircle(context, 200, canvas.height / 2, "green", 20, 5, "#f00", "#fff", "center", "bold 30px Arial", "A", circles);
+            drawCircle(context, 400, canvas.height - 54, "blue", 30, 5, "#ff0", "#fff", "center", "bold 30px Arial", "B", circles);
+            drawCircle(context, 440, 170, "lime", 30, 5, "#f00", "#fff", "center", "bold 30px Arial", "C", circles);
+            
+            // click handler
+            $('#appCanvas').click(function (e) {
+                var clickedX = e.pageX - this.offsetLeft;
+                var clickedY = e.pageY - this.offsetTop;
+                
+                for (var i = 0; i < circles.length; i++) {
+                    if (clickedX < circles[i].right && clickedX > circles[i].left && clickedY > circles[i].top && clickedY < circles[i].bottom) {
+                        // alert('You clicked: ' + (i + 1));
+                        alert(dataTab[i]);
+                    }
+                }
+            });
+        }
+        </script>
+    </head>
+    
+    <body onload="render()">
+        <canvas id="appCanvas" width="576" height="576"></canvas>
+        
+    </body>
+</html>
