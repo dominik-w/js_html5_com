@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <script type="application/javascript">
+    
+    /* load image */
+    function loadImage() {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        
+        // var imgSrc = 'C:/test/direct-code-logo-company-200x.png';
+        var imgSrc = 'http://dominik-w.pl/direct-code-logo-company-200x.png';
+        
+        // add file:// if user specified local path
+        if (imgSrc.indexOf("//") == -1 && imgSrc.indexOf(".") != 0) {
+            imgSrc = "file:///" + imgSrc;
+        }
+        
+        // load file into canvas and adjust params
+        var img = new Image();
+        img.onload = function() {
+            width = img.width;
+            height = img.height;
+            canvas.width = width;
+            canvas.height = height;
+            ctx.drawImage(img, 0, 0);
+            
+            // get image data
+            try {
+                imageData = ctx.getImageData(0, 0, width, height);
+            } catch(e) {
+                // !
+                netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+                imageData = ctx.getImageData(0, 0, width, height);
+            }
+        }
+        
+        img.src = imgSrc;
+    }
+    
+    </script>
+</head>
+
+<body onload="loadImage()">
+    <canvas id="canvas" width="400" height="300" style="border: solid 1px;"></canvas>
+
+</body>
+  
+</html>
