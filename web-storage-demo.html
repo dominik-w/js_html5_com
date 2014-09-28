@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Demo - JavaScript and web storage</title>
+		
+    </head>
+    <body>
+	
+	<script>
+	// session
+	// set
+	sessionStorage.setItem('msg', 'JavaScript Web Storage!');
+	
+	// get
+	alert(sessionStorage.getItem('msg'));
+	
+	/////
+	
+	// localStorage
+	localStorage.setItem('test', 'Local storage!');
+	localStorage.setItem('test2', 'Foo bar');
+	
+	alert(localStorage.getItem('test'));
+	
+	/////
+	
+	// data output from localStorage
+	var output = "DATA:\n-----\n";
+	if (window.localStorage) {
+	    if (localStorage.length) {
+		    for (var i = 0; i < localStorage.length; i++) {
+		        output += localStorage.key(i) + ': ' + localStorage.getItem(localStorage.key(i)) + '\n';
+			}
+		}
+	}
+	console.log(output);
+	
+	</script>
+	
+    </body>
+</html>
