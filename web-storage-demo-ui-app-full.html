@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <!-- (c) javascript-html5-tutorial.com -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>JavaScript localStorage - demo app</title>
+        
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        
+        <style>
+            #main {
+                border: solid 1px #00e;  
+                margin: 0 auto; 
+                padding: 5px; 
+                text-align: center; 
+                width: 33%;  
+            }
+        </style>
+    </head>
+    
+    <body>
+        
+        <section id="main">
+            <form onsubmit="javascript:storeSettings()">
+                
+                <label>Select font size: </label><br />
+                <input id="your_font" type="number" max="50" min="5" value="14">
+                <br />
+                
+                <label>Select border size: </label><br />
+                <input id="your_border" type="number" max="10" min="1" value="1">
+                <br />
+                
+                <label>Select color for background: </label><br />
+                <input id="your_color" type="color" value="#ffffff">
+                <br />
+                
+                <p>
+                    <input type="submit" value="Save settings">
+                    <input onclick="removeSettings()" type="reset" value="Remove settings">
+                </p>
+            </form>
+        </section>
+        
+        <script>
+        
+        function storeSettings() {
+            if ('localStorage' in window && window['localStorage'] !== null) {
+                try {
+                    var your_color = $('#your_color').val();
+                    var your_font = $('#your_font').val();
+                    var your_border = $('#your_border').val();
+                    
+                    localStorage.setItem('bgcolor', your_color);
+                    localStorage.setItem('fontsize', your_font);
+                    localStorage.setItem('border', your_border);
+                } catch (e) {
+                    alert('An error occured');
+                }
+            } else {
+                alert('Sorry, your browser must have localStorage support');
+            }
+        }
+        
+        function setDefaults() {
+            document.body.style.backgroundColor = '#ffffff';
+            document.body.style.fontSize = '14px';
+            $('#main').css('border', 'solid 1px #00e');
+            
+            $('#your_color').val('#ffffff');
+            $('#your_font').val('14');
+            $('#your_border').val('1');
+        }
+        
+        function removeSettings() {
+            localStorage.removeItem('bgcolor');
+            localStorage.removeItem('fontsize');
+            localStorage.removeItem('border');
+            
+            setDefaults();
+        }
+        
+        function useSettings() {
+            if (localStorage.length != 0) {
+                document.body.style.backgroundColor = localStorage.getItem('bgcolor');
+                
+                var font_size = localStorage.getItem('fontsize');
+                document.body.style.fontSize = font_size + 'px';
+                
+                var border_size = localStorage.getItem('border');
+                $('#main').css('border', 'solid ' + border_size + 'px #00e');
+                
+                $('#your_color').val(localStorage.getItem('bgcolor'));
+                $('#your_font').val(font_size);
+                $('#your_border').val(border_size);
+                
+            } else {
+                setDefaults();
+            }
+        }
+        
+        $( document ).ready(function() {
+            useSettings()
+        });
+        
+	</script>
+	
+    </body>
+</html>
