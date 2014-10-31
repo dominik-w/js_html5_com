@@ -1,0 +1,63 @@
+/*
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url('../gfx/bg2.jpg');
+    color: #fff;
+    font: 20px Verdana;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#gameBoard {
+    margin: 0px auto;
+    width: 640px;
+}
+
+#boxes {
+    margin: 10px 0 0;
+    z-index: 1;
+}
+
+#boxes div {
+    background: #777;
+    border: 4px solid lime;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.5);
+    cursor: pointer;
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    padding: 5px;
+    z-index: 2;
+}
+
+#boxes div img {
+    border-radius: 10px;
+    display: none;
+    z-index: 3;
+}
+
+#gameButtons {
+    display: block;
+    margin: 20px;
+    text-align: center;
+}
+
+#gameButtons .button {
+    background: lime;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+#gameButtons .button:hover {
+    background: #777;
+}
