@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Socket.io tests</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.2/socket.io.min.js"></script>
+
+        <script>
+            var socket = io.connect('//localhost:1337', { reconnection: false });
+            
+            // emit some data
+            socket.emit("user_online_data", {
+                mydata: {id: 1, name: "Tester", msg: "Hello!"}
+            });
+
+            // handle our events
+            socket.on('welcome', function (data) {
+                // process data from node script
+                $('#messages').append('<li>' + data.message + '</li>');
+
+                // emit some data to node script
+                socket.emit("sayhi", {
+                    data: 'Hi node!'
+                });
+            });
+
+            // another "event" we named "time"
+            socket.on('time', function (data) {
+                console.log(data);
+                $('#messages').append('<li>' + data.time + '</li>');
+            });
+
+            // if someting went wront and node script sent error data
+            socket.on('error', function () {
+                console.error(arguments);
+            });
+            
+        </script>
+    </head>
+
+    <body>
+        <ul id="messages"></ul>
+    </body>
+
+</html>
